@@ -1,6 +1,49 @@
+import pickle
+import os
+import gdown
+
 import streamlit as st
 import pickle
 import numpy as np
+
+# ---------------- DOWNLOAD FILES ---------------- #
+
+def download_file(file_id, output):
+    if not os.path.exists(output):
+        url = f"https://drive.google.com/uc?id={file_id}"
+        gdown.download(url, output, quiet=False)
+
+# books.pkl
+download_file(
+    "1Ov25KoyDtnghYfs_P6reyofLs7ekcm4E",
+    "books.pkl"
+)
+
+# pivot_table.pkl
+download_file(
+    "16ZlZNRqi25eFQlcy-BQeP0Z_7MiyNMRk",
+    "pivot_table.pkl"
+)
+
+# svd_similarity.pkl
+download_file(
+    "1X8bLm1Lt9yGf4YcOnC86nvAAZjEVAyEK",
+    "svd_similarity.pkl"
+)
+
+# ---------------- LOAD PICKLE FILES ---------------- #
+
+books = pickle.load(
+    open('books.pkl','rb')
+)
+
+pivot_table = pickle.load(
+    open('pivot_table.pkl','rb')
+)
+
+svd_similarity = pickle.load(
+    open('svd_similarity.pkl','rb')
+)
 
 # ---------------- PAGE CONFIG ---------------- #
 
